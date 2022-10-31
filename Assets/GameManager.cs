@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int Numero;
     public float LeFloat;
     public Bow Arco;
+    public ArrowStatic StaticArrow;
     public MeshRenderer Meshi;
 
     // Start is called before the first frame update
@@ -25,9 +26,15 @@ public class GameManager : MonoBehaviour
     {
         bool IsPressingF = Input.GetKey(KeyCode.F);
 
-        if (IsPressingF) Arco.Distort();
-        else Arco.Undistort();
-         
-        
+        if (IsPressingF)
+        {
+            Arco.Distort();
+            StaticArrow.AdjustPush();
+        }
+        else
+        {
+            Arco.Undistort();
+            StaticArrow.AdjustIdle();
+        }
     }
 }
