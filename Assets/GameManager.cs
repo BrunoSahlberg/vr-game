@@ -18,13 +18,14 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         var arco = Meshi.gameObject.GetComponent<Bow>();
-        Debug.Log($"obj {arco.name} filho de {arco.transform.parent.name}");
+        //Debug.Log($"obj {arco.name} filho de {arco.transform.parent.name}");
     }
 
     // Update is called once per frame
     void Update()
     {
         bool IsPressingF = Input.GetKey(KeyCode.F);
+        bool IsFKeyUp = Input.GetKeyUp(KeyCode.F);
 
         if (IsPressingF)
         {
@@ -35,6 +36,11 @@ public class GameManager : MonoBehaviour
         {
             Arco.Undistort();
             StaticArrow.AdjustIdle();
+        }
+
+        if (IsFKeyUp)
+        {
+            StaticArrow.Hide();
         }
     }
 }

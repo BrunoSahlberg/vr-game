@@ -20,7 +20,7 @@ public class ArrowStatic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.localPosition);
+        //Debug.Log(transform.localPosition);
     }
 
     public void AdjustPush()
@@ -31,5 +31,20 @@ public class ArrowStatic : MonoBehaviour
     public void AdjustIdle()
     {
         transform.localPosition = new Vector3(CurrentPositionX, CurrentPositionY, CurrentPositionZ);
+    }
+
+    public void Hide()
+    {
+        MeshRenderer mr = GetComponent<MeshRenderer>();
+
+        mr.enabled = false;
+        Invoke("Unhide", 3);
+
+    }
+    void Unhide()
+    {
+        MeshRenderer mr = GetComponent<MeshRenderer>();
+
+        mr.enabled = true;
     }
 }
