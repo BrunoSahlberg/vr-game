@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float LeFloat;
     public Bow Arco;
     public ArrowStatic StaticArrow;
+    public ArrowProjectile Projectile;
     public MeshRenderer Meshi;
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         bool IsPressingF = Input.GetKey(KeyCode.F);
         bool IsFKeyUp = Input.GetKeyUp(KeyCode.F);
+        bool IsFKeyDown = Input.GetKeyDown(KeyCode.F);
 
         if (IsPressingF)
         {
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
         if (IsFKeyUp)
         {
             StaticArrow.Hide();
+            Projectile.Shoot(StaticArrow.CurrentPosition, StaticArrow.CurrentRotation);
         }
     }
 }

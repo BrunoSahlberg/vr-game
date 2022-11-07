@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ArrowStatic : MonoBehaviour
 {
-
     float CurrentPositionX;
     float CurrentPositionY;
     float CurrentPositionZ;
+
+    public Vector3 CurrentPosition;
+    public Quaternion CurrentRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,8 @@ public class ArrowStatic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CurrentPosition = transform.position;
+        CurrentRotation = transform.rotation;
         //Debug.Log(transform.localPosition);
     }
 
