@@ -19,8 +19,12 @@ public class GameManager : MonoBehaviour
     public Target Target3;
     public Target Target4;
     private List<Target> TargetList = new List<Target>();
+    private List<string> QuestionList = new List<string>();
+    private List<int> AnswerList = new List<int>();
 
     public QuestionBoard QuestionBoard;
+
+    private int CurrentQuestion;
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,9 +36,11 @@ public class GameManager : MonoBehaviour
         TargetList.Add(Target3);
         TargetList.Add(Target4);
 
-        //Debug.Log($"obj {arco.name} filho de {arco.transform.parent.name}");
+        QuestionList.Add("Um terreno retangular será dividido ao meio, pela sua diagonal, formando dois triângulos retângulos.A metade desse terreno será cercada com 4 fios de arame farpado.Sabendo que as dimensões desse terreno são de 20 metros de largura e 21 metros de comprimento, qual será a metragem mínima gasta de arame ?");
 
         StartGame();
+
+        CurrentQuestion += 0;
     }
 
     // Update is called once per frame
@@ -78,5 +84,15 @@ public class GameManager : MonoBehaviour
         int rand = Random.Range(0, 3);
 
         TargetList[rand].answer = "deu certo crlh";
+    }
+
+    public void RightAnswer()
+    {
+
+    }
+
+    public void WrongAnswer()
+    {
+
     }
 }

@@ -8,12 +8,17 @@ public class QuestionBoard : MonoBehaviour
     public TMP_Text QuestionText;
     void Start()
     {
-        QuestionText.text = "";
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void UpdateQuestion(string text)
+    {
+        QuestionText.text = text;
     }
 }
