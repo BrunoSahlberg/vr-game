@@ -187,6 +187,7 @@ MonoBehaviour:
   Target2: {fileID: 507500154}
   Target3: {fileID: 849184114}
   Target4: {fileID: 1896044162}
+  QuestionBoard: {fileID: 8423913508757003853}
 --- !u!4 &274334246
 Transform:
   m_ObjectHideFlags: 0
@@ -3104,13 +3105,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Question Board
       objectReference: {fileID: 0}
+    - target: {fileID: 3762613647185349868, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_RootOrder
@@ -3134,7 +3139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3150,7 +3155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 233.02364
+      value: 68.72
       objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3174,7 +3179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.598891
+      value: 4.03
       objectReference: {fileID: 0}
     - target: {fileID: 5440489701032310559, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3188,5 +3193,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8262566446846853741, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262566446846853741, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
+      propertyPath: m_AutoSizeIterationCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
+--- !u!1 &8423913508757003852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 901121815693259805, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
+  m_PrefabInstance: {fileID: 8423913508757003851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8423913508757003853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423913508757003852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35553c25c4e3b904199290d080b701d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestionText: {fileID: 8423913508757003854}
+--- !u!114 &8423913508757003854 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8262566446846853741, guid: b1de6b359115aa749938a2db91ba6744, type: 3}
+  m_PrefabInstance: {fileID: 8423913508757003851}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423913508757003852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
