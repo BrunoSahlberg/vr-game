@@ -23,7 +23,7 @@ public class Marker : MonoBehaviour
     {
         _renderer = Tip.GetComponent<Renderer>();
         _colors = Enumerable.Repeat(_renderer.material.color, PenSize * PenSize).ToArray();
-        _tipHeight = Tip.localScale.y;
+        _tipHeight = Tip.lossyScale.y;
     }
 
     // Update is called once per frame
@@ -62,13 +62,13 @@ public class Marker : MonoBehaviour
 
                     }
 
-                    transform.rotation = _lastTouchRot;
+                    //transform.rotation = _lastTouchRot;
 
                     _whiteboard.texture.Apply();
                 }
 
                 _lastTouchPos = new Vector2(x, y);
-                _lastTouchRot = transform.rotation;
+                //_lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }
