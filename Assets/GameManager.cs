@@ -28,8 +28,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Instance = this;
         var arco = Meshi.gameObject.GetComponent<Bow>();
+
+        CurrentQuestion += 0;
 
         TargetList.Add(Target1);
         TargetList.Add(Target2);
@@ -37,10 +38,16 @@ public class GameManager : MonoBehaviour
         TargetList.Add(Target4);
 
         QuestionList.Add("Um terreno retangular será dividido ao meio, pela sua diagonal, formando dois triângulos retângulos.A metade desse terreno será cercada com 4 fios de arame farpado.Sabendo que as dimensões desse terreno são de 20 metros de largura e 21 metros de comprimento, qual será a metragem mínima gasta de arame ?");
+        QuestionList.Add("Um triângulo de altura X, hipotênusa 13cm e base 5cm, encontre a área do triângulo");
+        QuestionList.Add("Dado um retângulo de base 40m e altura 30m, qual o seu diâmetro?");
+        QuestionList.Add("Qual é a quantidade de arranjos simples que podemos fazer utilizando 3 letras do conjunto {A, B, C, D, E}?");
+
+        AnswerList.Add(280);
+        AnswerList.Add(30);
+        AnswerList.Add(50);
+        AnswerList.Add(60);
 
         StartGame();
-
-        CurrentQuestion += 0;
     }
 
     // Update is called once per frame
@@ -70,29 +77,92 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
-        // reset targets
-        Target1.answer = "teste1";
-        Target2.answer = "teste2";
-        Target3.answer = "teste3";
-        Target4.answer = "teste4";
-        Target1.isRightTarget = false;
-        Target2.isRightTarget = false;
-        Target3.isRightTarget = false;
-        Target4.isRightTarget = false;
+        ResetTargets();
+        EnableTargets();
 
+        int randTarget = Random.Range(0, 3);
+        TargetList[randTarget].isRightTarget = true;
+        TargetList[randTarget].answer = AnswerList[CurrentQuestion];
 
-        int rand = Random.Range(0, 3);
+        QuestionBoard.UpdateQuestion(QuestionList[CurrentQuestion]);
 
-        TargetList[rand].answer = "deu certo crlh";
+        SetWrongQuestions(randTarget);
+
+        CurrentQuestion++;
     }
 
     public void RightAnswer()
     {
-
+        NextQuestion();
     }
 
     public void WrongAnswer()
     {
+        // TO DO: Erros
+    }
 
+    private void NextQuestion()
+    {
+        ResetTargets();
+
+        int randTarget = Random.Range(0, 3);
+        TargetList[randTarget].isRightTarget = true;
+        TargetList[randTarget].answer = AnswerList[CurrentQuestion];
+
+        QuestionBoard.UpdateQuestion(QuestionList[CurrentQuestion]);
+
+        SetWrongQuestions(randTarget);
+
+        CurrentQuestion++;
+        if (CurrentQuestion == 4)
+        {
+            DisableTargets();
+            // TO DO: End Game
+        }
+    }
+
+    private void ResetTargets()
+    {
+        Target1.answer = 0;
+        Target2.answer = 0;
+        Target3.answer = 0;
+        Target4.answer = 0;
+        Target1.isRightTarget = false;
+        Target2.isRightTarget = false;
+        Target3.isRightTarget = false;
+        Target4.isRightTarget = false;
+    }
+
+    private void SetWrongQuestions(int selectedTarget) 
+    {
+        for (int index = 0; index < 3; index++)
+        {
+            if (index != selectedTarget)
+            {
+                int randAnswer = AnswerList[CurrentQuestion];
+                while (randAnswer == AnswerList[CurrentQuestion])
+                {
+                    randAnswer = Random.Range((AnswerList[CurrentQuestion] - 15), (AnswerList[CurrentQuestion] + 15));
+                }
+
+                TargetList[index].answer = randAnswer;
+            }
+        }
+    }
+
+    private void DisableTargets()
+    {
+        Target1.IsDisabled = true;
+        Target2.IsDisabled = true;
+        Target3.IsDisabled = true;
+        Target4.IsDisabled = true;
+    }
+
+    private void EnableTargets()
+    {
+        Target1.IsDisabled = false;
+        Target2.IsDisabled = false;
+        Target3.IsDisabled = false;
+        Target4.IsDisabled = false;
     }
 }

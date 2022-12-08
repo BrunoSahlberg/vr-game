@@ -17,8 +17,9 @@ public class QuestionBoard : MonoBehaviour
         
     }
 
-    public void UpdateQuestion(string text)
+    public void UpdateQuestion(string question)
     {
-        QuestionText.text = text;
+        Debug.Log(question);
+        QuestionText.text = question;
     }
 }

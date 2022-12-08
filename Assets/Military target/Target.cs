@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public string answer;
+    public int answer;
+    public bool IsDisabled;
     public bool isRightTarget = false;
-    void Start()
-    {
-        
-    }
+    public GameManager GameManager;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(answer);
+        if (!IsDisabled) { 
+            if (isRightTarget)
+            {
+                GameManager.RightAnswer();
+            }
+            else
+            {
+                // TO DO: negative points
+                GameManager.WrongAnswer();
+
+            }
+        }
     }
 }
