@@ -7,6 +7,7 @@ public class Marker : MonoBehaviour
 {
     [SerializeField] private Transform Tip;
     [SerializeField] private int PenSize = 5;
+    [SerializeField] private Transform TipPai;
 
     private Renderer _renderer;
     private Color[] _colors;
@@ -21,9 +22,10 @@ public class Marker : MonoBehaviour
 
     void Start()
     {
+        print(name);
         _renderer = Tip.GetComponent<Renderer>();
         _colors = Enumerable.Repeat(_renderer.material.color, PenSize * PenSize).ToArray();
-        _tipHeight = Tip.localScale.y;
+        _tipHeight = TipPai.localScale.y * Tip.localScale.y;
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class Marker : MonoBehaviour
 
     private void Draw()
     {
-        if (Physics.Raycast(Tip.position, transform.up, out _touch, _tipHeight))
+        if (Physics.Raycast(TipPai.position, transform.up, out _touch, _tipHeight))
         {
             if (_touch.transform.CompareTag("Whiteboard"))
             {
@@ -62,13 +64,13 @@ public class Marker : MonoBehaviour
 
                     }
 
-                    transform.rotation = _lastTouchRot;
+                    //transform.rotation = _lastTouchRot;
 
                     _whiteboard.texture.Apply();
                 }
 
                 _lastTouchPos = new Vector2(x, y);
-                _lastTouchRot = transform.rotation;
+                //_lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }
