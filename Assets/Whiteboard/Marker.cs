@@ -64,13 +64,11 @@ public class Marker : MonoBehaviour
 
                     }
 
-                    //transform.rotation = _lastTouchRot;
 
                     _whiteboard.texture.Apply();
                 }
-
+                
                 _lastTouchPos = new Vector2(x, y);
-                //_lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }

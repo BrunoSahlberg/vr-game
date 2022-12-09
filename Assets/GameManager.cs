@@ -14,6 +14,14 @@ public class GameManager : MonoBehaviour
     public ArrowProjectile ArrowProjectile;
     public MeshRenderer Meshi;
 
+    [SerializeField] GameObject _bow;
+    [SerializeField] GameObject _arrow;
+    [SerializeField] GameObject _tipPai;
+    [SerializeField] GameObject _tip;
+    [SerializeField] GameObject _tipPaiEraser;
+    [SerializeField] GameObject _tipEraser;
+
+
     public Target Target1;
     public Target Target2;
     public Target Target3;
@@ -37,10 +45,10 @@ public class GameManager : MonoBehaviour
         TargetList.Add(Target3);
         TargetList.Add(Target4);
 
-        QuestionList.Add("Um terreno retangular será dividido ao meio, pela sua diagonal, formando dois triângulos retângulos.A metade desse terreno será cercada com 4 fios de arame farpado.Sabendo que as dimensões desse terreno são de 20 metros de largura e 21 metros de comprimento, qual será a metragem mínima gasta de arame ?");
-        QuestionList.Add("Um triângulo de altura X, hipotênusa 13cm e base 5cm, encontre a área do triângulo");
-        QuestionList.Add("Dado um retângulo de base 40m e altura 30m, qual o seu diâmetro?");
-        QuestionList.Add("Qual é a quantidade de arranjos simples que podemos fazer utilizando 3 letras do conjunto {A, B, C, D, E}?");
+        QuestionList.Add("Um terreno retangular serï¿½ dividido ao meio, pela sua diagonal, formando dois triï¿½ngulos retï¿½ngulos.A metade desse terreno serï¿½ cercada com 4 fios de arame farpado.Sabendo que as dimensï¿½es desse terreno sï¿½o de 20 metros de largura e 21 metros de comprimento, qual serï¿½ a metragem mï¿½nima gasta de arame ?");
+        QuestionList.Add("Um triï¿½ngulo de altura X, hipotï¿½nusa 13cm e base 5cm, encontre a ï¿½rea do triï¿½ngulo");
+        QuestionList.Add("Dado um retï¿½ngulo de base 40m e altura 30m, qual o seu diï¿½metro?");
+        QuestionList.Add("Qual ï¿½ a quantidade de arranjos simples que podemos fazer utilizando 3 letras do conjunto {A, B, C, D, E}?");
 
         AnswerList.Add(280);
         AnswerList.Add(30);
@@ -56,6 +64,9 @@ public class GameManager : MonoBehaviour
         bool IsPressingF = Input.GetKey(KeyCode.F);
         bool IsFKeyUp = Input.GetKeyUp(KeyCode.F);
         bool IsFKeyDown = Input.GetKeyDown(KeyCode.F);
+        bool IsEquipedBowKeyPressed = Input.GetKeyDown(KeyCode.Alpha1);
+        bool IsEquipedPenKeyPressed = Input.GetKeyDown(KeyCode.Alpha2);
+        bool IsEquipedEraserKeyPressed = Input.GetKeyDown(KeyCode.Alpha3);
 
         if (IsPressingF)
         {
@@ -73,6 +84,31 @@ public class GameManager : MonoBehaviour
             StaticArrow.Hide();
             ArrowProjectile.Shoot();
         }
+
+        if (IsEquipedBowKeyPressed)
+        {
+            _bow.SetActive(true);
+            _arrow.SetActive(true);
+            _tipPai.SetActive(false);
+            _tipPaiEraser.SetActive(false);
+        }
+
+        if (IsEquipedPenKeyPressed)
+        {
+            _bow.SetActive(false);
+            _arrow.SetActive(false);
+            _tipPai.SetActive(true);
+            _tipPaiEraser.SetActive(false);
+        }
+
+        if (IsEquipedEraserKeyPressed)
+        {
+            _bow.SetActive(false);
+            _arrow.SetActive(false);
+            _tipPai.SetActive(false);
+            _tipPaiEraser.SetActive(true);
+        }
+
     }
 
     private void StartGame()
