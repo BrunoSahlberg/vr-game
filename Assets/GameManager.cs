@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
 
     private void SetWrongQuestions(int selectedTarget) 
     {
-        for (int index = 0; index < 3; index++)
+        for (int index = 0; index <= 3; index++)
         {
             if (index != selectedTarget)
             {
